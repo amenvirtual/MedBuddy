@@ -1,0 +1,13 @@
+<ul>
+  <li><a [routerLink]="['/medicine', {outlets:{'herby':['herbal']}}]">Herbal </a></li>
+  <li><a [routerLink]="['/medicine', {outlets:{'indy':['indian']}}]">Indian </a></li>
+</ul>
+
+<div class='row'>
+  <div class='col-md-6' style='background-color:#11f022'>
+    <router-outlet name='indy'></router-outlet>
+  </div>
+  <div class='col-md-6' style='background-color:#ddffff'>
+    <router-outlet name='herby'></router-outlet>
+  </div>
+</div>

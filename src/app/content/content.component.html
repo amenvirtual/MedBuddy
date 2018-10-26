@@ -1,0 +1,17 @@
+<div class='card-deck'>
+  <div *ngFor='let eachSpecialist of doctorList'>
+    <div class='card-img-top'><img src={{eachSpecialist.imageUrl}} alt="Doctor"></div>
+    <div class='card-header'>{{eachSpecialist.doctorName}}</div>
+    <div class='card-body'>{{eachSpecialist.specialization}}</div>
+    <div class='card-footer'>{{eachSpecialist.mobileNumber}}</div>
+  </div>
+  <div>
+    <label>Enter your pincode</label>
+    <input type='text' [(ngModel)]='codeNumber'>
+    <app-find-service-area [pincode]='codeNumber' (response)='onChange($event)'></app-find-service-area>
+    <button (click)='add()' class='btn btn-danger'>Add</button>
+    <div #locationInfo></div>
+  </div>
+
+  <app-testimony>test</app-testimony>
+</div>

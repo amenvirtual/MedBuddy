@@ -1,0 +1,9 @@
+<form [formGroup]='loginForm' (ngSubmit)='validate()'>
+    <ng-container *ngFor='let eachConfig of formConfig'>
+        <div>
+            <label>{{eachConfig.label}}</label>
+            <input type={{eachConfig.type}} formControlName={{eachConfig.name}}>
+        </div>
+    </ng-container>
+    <input type='submit' value='Sign In'>
+</form>

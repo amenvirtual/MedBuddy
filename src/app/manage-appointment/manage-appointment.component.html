@@ -1,0 +1,46 @@
+<div class='col-md-3'>
+  <form #f='ngForm' (ngSubmit)='submit(f.value)'>
+    <div class='form-group'>
+      <label for="id">Id</label>
+      <input type="text" name='id' [(ngModel)]='appointment.id' class='form-control'>
+    </div>
+
+    <div class='form-group'>
+      <label for="patientName">Patient Name</label>
+      <input type="text" name='patientName' #patName='ngModel' [ngModelOptions]="{updateOn:'blur'}" [(ngModel)]='appointment.patientName' class='form-control'
+        required>
+      <span *ngIf='patName.invalid && patName.touched' style='color:#ff6347'>Name is required</span>
+    </div>
+
+    <div class='form-group'>
+      <label for="date">Appointment Date</label>
+      <input type="datetime-local" name='date' [(ngModel)]='appointment.date' class='form-control'>
+    </div>
+
+    <div class='form-group'>
+      <label for="consultation">Consultation</label>
+      <select name='consultation' [(ngModel)]='appointment.consultation'>
+        <option *ngFor='let eachOption of consulationChoice'>{{eachOption}}</option>
+      </select>
+
+    </div>
+
+    <div class='form-group'>
+      <input type='submit' [value]='btnText' class='btn btn-danger'>
+    </div>
+  </form>
+</div>
+
+<div>
+  <table class='table table-striped'>
+
+    <tr *ngFor='let eachAppointment of appointmentList'>
+      <td>{{eachAppointment.id}}</td>
+      <td>{{eachAppointment.patientName |uppercase}}</td>
+      <td>{{eachAppointment.date | date:'medium'}}</td>
+      <td>{{eachAppointment.consultation | uppercase}}</td>
+      <td><button (click)='edit(eachAppointment)' class='fa fa-edit'></button></td>
+      <td><button (click)='delete(eachAppointment)' class='fa fa-remove'></button></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,8 @@
+<table class='table table-striped'>
+  <tr *ngFor='let eachItem of catalog'>
+    <td>{{eachItem.id}}</td>
+    <td>{{eachItem.description}}</td>
+    <td><img src={{eachItem.imageRef}}></td>
+    <td><a [routerLink]="['/catalog', eachItem.id]">Show</a> </td>
+  </tr>
+</table>

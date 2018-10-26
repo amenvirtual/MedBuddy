@@ -1,0 +1,19 @@
+<table class='table table-bordered'>
+  <tr>
+    <td colspan='3'><input type='text' [(ngModel)]='searchCondition'></td>
+  </tr>
+  <tr>
+    <th>Transaction Id</th>
+    <th>Transaction Date</th>
+    <th>Description</th>
+    <th>Amount</th>
+  </tr>
+  <tr *ngFor="let eachData of hisdata | transaction:'description':searchCondition | paginate:{itemsPerPage:2, currentPage:pageNumber }">
+    <td>{{eachData.id}}</td>
+    <td>{{eachData.transDate | date:'medium'}}</td>
+    <td>{{eachData.description | uppercase}}</td>
+    <td>{{eachData.transAmount | currency:'INR':'symbol'}}</td>
+  </tr>
+</table>
+<pagination-controls (pageChange)='pageNumber=$event'></pagination-controls>
+{{hisdata | json}}
